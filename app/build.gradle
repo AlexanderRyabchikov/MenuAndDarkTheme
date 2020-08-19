@@ -1,0 +1,122 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'maven'
+
+android {
+    compileSdkVersion toolVersions.android.targetSdk
+
+    defaultConfig {
+        applicationId "org.skender.testapp"
+        minSdkVersion toolVersions.android.minSdk
+        targetSdkVersion toolVersions.android.targetSdk
+        versionCode 1
+        versionName "testApp"
+        multiDexEnabled true
+        resConfigs("ru")
+
+        vectorDrawables.useSupportLibrary = true
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        disableEmptyStrategyCheck: 'false',
+                        enableEmptyStrategyHelper: 'true',
+                        defaultMoxyStrategy: 'moxy.viewstate.strategy.OneExecutionStateStrategy'
+                ]
+            }
+        }
+    }
+
+    flavorDimensions "main"
+
+    productFlavors {
+        development {
+            dimension "main"
+            minSdkVersion toolVersions.android.minDevelopSdk
+            buildConfigField("String", "ServerUrl", "$appConfig.server.server")
+            buildConfigField("String", "API", "$appConfig.server.api")
+        }
+
+        production {
+            dimension "main"
+            minSdkVersion toolVersions.android.minProductionSdk
+            buildConfigField("String", "ServerUrl", "$appConfig.server.server")
+            buildConfigField("String", "API", "$appConfig.server.api")
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            debuggable true
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // SUPPORT
+    implementation "androidx.appcompat:appcompat:$libVersions.androidx.appcompat"
+    implementation "androidx.recyclerview:recyclerview:$libVersions.androidx.recyclerview"
+    implementation "androidx.cardview:cardview:$libVersions.androidx.cardview"
+    implementation "androidx.annotation:annotation:$libVersions.androidx.annotation"
+    implementation "androidx.constraintlayout:constraintlayout:$libVersions.androidx.constraintLayout"
+    implementation "androidx.multidex:multidex:$libVersions.androidx.multidex"
+    implementation "androidx.vectordrawable:vectordrawable:$libVersions.androidx.vectordrawable"
+    implementation "androidx.navigation:navigation-fragment:$libVersions.androidx.navigation"
+    implementation "androidx.navigation:navigation-ui:$libVersions.androidx.navigation"
+    implementation "com.google.android.material:material:$libVersions.androidx.material"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$libVersions.androidx.swipe"
+
+
+    // DI
+    implementation "com.google.dagger:dagger:$libVersions.dagger"
+    implementation "com.google.dagger:dagger-android:$libVersions.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$libVersions.dagger"
+    kapt "com.google.dagger:dagger-compiler:$libVersions.dagger"
+
+    implementation 'com.github.moxy-community:moxy:2.0-alpha05'
+    implementation 'com.github.moxy-community:moxy-material:2.0-alpha05'
+    kapt 'com.github.moxy-community:moxy-compiler:2.0-alpha05'
+    implementation 'com.github.moxy-community:moxy-androidx:2.0-alpha05'
+
+    // ADAPTER
+    implementation "net.idik:slimadapter:$libVersions.slimAdapter"
+
+    // RETROFIT
+    implementation "com.squareup.retrofit2:retrofit:$libVersions.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$libVersions.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$libVersions.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$libVersions.okHttp"
+
+    // RXJAVA
+    implementation "io.reactivex.rxjava2:rxjava:$libVersions.rx.rxJava"
+    implementation "io.reactivex.rxjava2:rxandroid:$libVersions.rx.rxAndroid"
+    implementation "io.reactivex.rxjava2:rxkotlin:$libVersions.rx.rxKotlin"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    // IMAGE LOADING
+    implementation "com.github.bumptech.glide:glide:$libVersions.glide"
+    kapt  "com.github.bumptech.glide:compiler:$libVersions.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$libVersions.glide"
+}

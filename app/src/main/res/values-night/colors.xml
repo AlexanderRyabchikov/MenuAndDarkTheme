@@ -1,0 +1,46 @@
+<resources>
+    <color name="colorPrimary">@color/dark</color>
+    <color name="colorPrimaryDark">@color/blue_grey</color>
+    <color name="colorAccent">@color/azure</color>
+    <color name="textColorPrimary">@color/white</color>
+    <color name="textColor">@color/dark</color>
+    <color name="textColorSecondary">@color/blue_grey</color>
+
+
+    <!--Palette-->
+    <color name="black">#000000</color>
+    <color name="black50">#88000000</color>
+    <color name="dark">#2f3144</color>
+    <color name="azure">#0f9df0</color>
+    <color name="blue_grey">#89929b</color>
+    <color name="white">#ffffff</color>
+    <color name="white_pale">#B7FFFFFF</color>
+    <color name="orangey_red">#f25137</color>
+    <color name="light_blue_grey">#c4c9cd</color>
+    <color name="very_light_blue_grey">#f5f9fc</color>
+    <color name="pale_grey">#f4f6fa</color>
+    <color name="water_blue">#1186cb</color>
+    <color name="red">#ff0000</color>
+    <color name="slate_grey">#5e617b</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="white90">#E6FFFFFF</color>
+    <color name="white80">#CCFFFFFF</color>
+    <color name="white70">#B3FFFFFF</color>
+
+    <color name="black70">#B3000000</color>
+    <color name="black40">#66000000</color>
+    <color name="black3">#08000000</color>
+
+    <color name="text_document">#b8b8b8</color>
+    <color name="toolbar_shadow_color">#eeeeee</color>
+
+    <color name="color_disabled">@color/light_blue_grey</color>
+
+    <color name="toolbar_border">#D8D8D8</color>
+
+    <color name="black30">#4D000000</color>
+    <color name="bottom_background">@color/black</color>
+    <color name="text_color_toolbar">@color/black</color>
+</resources>

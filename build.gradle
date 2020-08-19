@@ -1,0 +1,79 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.3.72"
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.0.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+ext {
+
+    serverUrl = '"https://front-task.chibbistest.ru/"'
+    serverApi = '"api/v1/"'
+    appServerConfig = "server"
+
+    appConfig = [
+            (appServerConfig) : [server: "$serverUrl",
+                                 api: "$serverApi"]
+    ]
+
+    toolVersions = [
+            android: [
+                    minSdk           : 19,
+                    minProductionSdk : 19,
+                    minDevelopmentSdk: 19,
+                    targetSdk        : 29,
+                    compileSdk       : 29,
+                    buildTools       : '29.0.3'
+            ]
+    ]
+
+    libVersions = [
+            androidx           : [
+                    support : '27.1.1',
+                    appcompat       : '1.2.0',
+                    recyclerview    : '1.1.0',
+                    cardview        : '1.0.0',
+                    annotation      : '1.1.0',
+                    constraintLayout: '2.0.0-rc1',
+                    multidex        : '2.0.1',
+                    vectordrawable  : '1.1.0',
+                    navigation      : '2.3.0',
+                    material        : '1.2.0',
+                    swipe           : '1.1.0'
+            ],
+            rx                : [
+                    rxJava   : '2.1.13',
+                    rxAndroid: '2.1.0',
+                    rxKotlin : '2.4.0'
+            ],
+            dagger            : '2.16',
+            glide             : '4.9.0',
+            retrofit          : '2.4.0',
+            okHttp            : '3.10.0',
+            moxy              : '1.5.3',
+            navigation        : '1.0.0-rc02',
+            slimAdapter       : '2.1.0'
+    ]
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.google.com/' }
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

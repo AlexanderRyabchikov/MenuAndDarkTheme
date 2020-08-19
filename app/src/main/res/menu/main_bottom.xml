@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/restaurantFragment"
+        android:icon="@drawable/ic_restaurant"
+        android:enabled="true"
+        android:title="@string/list_restaurant"
+        app:showAsAction="ifRoom|withText"
+        />
+
+    <item
+        android:icon="@drawable/ic_bookmarks"
+        android:enabled="true"
+        android:id="@+id/bestsellerFragment"
+        android:title="@string/bestseller"
+        app:showAsAction="ifRoom|withText"
+        />
+
+    <item
+        android:id="@+id/feedbackFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_feedback"
+        android:title="@string/feedback"
+        app:showAsAction="ifRoom|withText"
+        />
+</menu>

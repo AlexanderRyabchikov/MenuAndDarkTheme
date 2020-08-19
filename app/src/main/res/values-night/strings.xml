@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestApp</string>
+
+    <string name="list_restaurant">Рестораны</string>
+    <string name="bestseller">Хиты продаж</string>
+    <string name="feedback">Отзывы</string>
+
+    <string name="error_unknown">Что-то пошло не так, попробуйте обновить экран</string>
+    <string name="error_try_again">Обновить</string>
+</resources>
