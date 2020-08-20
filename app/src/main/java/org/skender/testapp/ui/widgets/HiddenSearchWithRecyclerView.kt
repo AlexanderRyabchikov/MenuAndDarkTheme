@@ -7,10 +7,9 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.Filterable
-import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +35,7 @@ class HiddenSearchWithRecyclerView @JvmOverloads constructor(
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchBarLinearLayout: LinearLayout
     private lateinit var searchBarSearchView: SearchView
+    private lateinit var closeBtn: AppCompatImageView
     private var lastYDrag: Float = 0F
     private var startYDrag: Float = 0F
     private var movementDirection: Movement = Movement.UP
@@ -84,6 +84,7 @@ class HiddenSearchWithRecyclerView @JvmOverloads constructor(
 
     private fun setupViews() {
         searchBarSearchView = searchBarLinearLayout.findViewById(R.id.searchBarSearchView)
+        closeBtn = searchBarSearchView.findViewById(R.id.search_close_btn)
 
         val recyclerViewLayoutParams = recyclerView.layoutParams as? LayoutParams
         val searchBarLayoutParams = LayoutParams(
@@ -225,8 +226,15 @@ class HiddenSearchWithRecyclerView @JvmOverloads constructor(
         if (event.y <= searchBarLinearLayout.y + searchBarLinearLayout.height
             && event.y > 0
         ) {
+
             searchBarSearchView.dispatchTouchEvent(event)
-            if (event.action == MotionEvent.ACTION_UP) {
+            if (event.x > searchBarSearchView.right - closeBtn.width) {
+
+                searchBarSearchView.setQuery("", false)
+                searchBarSearchView.clearFocus()
+                searchBarSearchView.setIconifiedByDefault(false)
+
+            } else if (event.action == MotionEvent.ACTION_UP) {
                 searchBarSearchView.isIconified = false
                 searchBarSearchView.performClick()
             }

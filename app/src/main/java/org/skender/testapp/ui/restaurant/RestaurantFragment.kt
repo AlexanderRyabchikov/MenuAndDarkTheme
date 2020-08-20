@@ -1,16 +1,15 @@
 package org.skender.testapp.ui.restaurant
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
-import android.view.View
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_restaurants.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
